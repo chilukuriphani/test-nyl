@@ -29,6 +29,16 @@ module "database" {
 data "postgresql_tables" "my_tables" {
   database = "be"
 }
+/*
 output "db_tables" {
   value = "${data.postgresql_tables.my_tables.tables}"
+}
+*/
+
+resource "postgresql_role" "my_replication_user" {
+  name             = "beuser"
+  login            = true
+  connection_limit = 1
+  password         = "md5c98cbfeb6a347a47eb8e96cfb4c4b890"
+//  roles            = ["LOGIN"]
 }

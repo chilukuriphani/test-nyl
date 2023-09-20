@@ -112,7 +112,7 @@ resource "aws_db_instance" "default" {
   multi_az                    = var.multi_az
   storage_type                = var.storage_type
   iops                        = var.iops
-  publicly_accessible         = "false"
+  publicly_accessible         = "true"
   snapshot_identifier         = var.snapshot_identifier
   allow_major_version_upgrade = var.allow_major_version_upgrade
   auto_minor_version_upgrade  = var.auto_minor_version_upgrade
@@ -160,4 +160,9 @@ resource "aws_secretsmanager_secret_version" "example" {
     "db_name"  = aws_db_instance.default.db_name,
     "port"     = aws_db_instance.default.port,
     "host"     = aws_db_instance.default.address })
+    lifecycle {
+      ignore_changes = [
+        secret_string
+      ]
+    }
 }

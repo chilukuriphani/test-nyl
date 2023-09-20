@@ -117,6 +117,7 @@ variable "apply_immediately" {
   type      = string
   default   = "true"
 }
+
 variable "db_family" {
   description = "Set to true if need to update the setting immediately"
   type      = string
