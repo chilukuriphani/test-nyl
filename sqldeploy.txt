@@ -1,0 +1,2 @@
+./be/public/tables/be_policy_alert.sql
+./be/public/tables/be_advisor_alert.sql
